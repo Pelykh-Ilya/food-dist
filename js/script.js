@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //Timer
 
-    const deadline = '2022-07-15';
+    const deadline = '2022-09-15';
     //от себя чтобы правильно отображаляся таймер
     const timeZone = new Date().getUTCHours() - new Date().getHours();
 
