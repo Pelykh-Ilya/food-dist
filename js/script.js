@@ -146,7 +146,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', showModalByScroll);
 
-
     // Используем классы для карточек
 
     class MenuCard {
@@ -190,8 +189,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // const div = new MenuCard();
-    // div.render();
     new MenuCard(
         "img/tabs/vegy.jpg",
         "vegy",
@@ -250,27 +247,27 @@ window.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(form);
 
             const object = {};
-            formData.forEach(function(value, key) {
+            formData.forEach(function (value, key) {
                 object[key] = value;
             });
 
             fetch('server.php', {
-                method: "POST",
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(object)
-            })
-            .then(data => data.text())
-            .then(data => {
-                console.log(data);
-                showThanksModal(message.succes);
-                statusMessage.remove();
-            }).catch(() => {
-                showThanksModal(message.failure);
-            }).finally(() => {
-                form.reset();
-            });
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(object)
+                })
+                .then(data => data.text())
+                .then(data => {
+                    console.log(data);
+                    showThanksModal(message.succes);
+                    statusMessage.remove();
+                }).catch(() => {
+                    showThanksModal(message.failure);
+                }).finally(() => {
+                    form.reset();
+                });
         });
     }
 
@@ -279,7 +276,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         prevModalDialog.classList.add('hide');
         openModal();
-        
+
         const thanksModal = document.createElement('div');
         thanksModal.classList.add('modal__dialog');
         thanksModal.innerHTML = `
@@ -296,4 +293,8 @@ window.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }, 4000);
     }
-}); 
+
+    fetch('db.json')
+        .then(data => data.json())
+        .then(res => console.log(res));
+});
